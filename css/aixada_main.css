@@ -1,0 +1,404 @@
+@charset "utf-8";
+/* CSS Document */
+
+* 					{margin:0; padding:0;}
+
+h1					{font-size:1.6em; padding-left:6px; margin-top:20px; margin-bottom:20px;}
+h2,h3,h4			{padding:2px;}
+td 					{vertical-align:top;}
+th					{background:#E1E1E1; margin-bottom:3px;}
+input 				{padding-left:2px;}
+img 				{border:0px solid #fff;}
+option 				{padding:1px 5px;}
+
+
+/** generic styles **/
+.boldStuff			{font-weight:bold;}
+.textAlignRight		{text-align:right;}
+.textAlignLeft		{text-align:left;}
+.textAlignCenter	{text-align:center;}
+.floatLeft			{float:left;}
+.floatRight			{float:right;}
+.clearBoth			{clear:both;}
+.hidden				{display:none;}
+.showBlock			{display:block;}
+.showInline			{display:inline;}
+.msg_dialog			{text-align:center;}
+.optionLink			{font-size:1.0em;}
+
+.negativeBalance	{color:red;}
+
+.greenBg			{background-color:green;}
+.lightGreenBg		{background-color:#72b42d;}
+.okGreen			{color:darkgreen; background:#D1F3D1;}
+.noRed				{background:#ff7a75;}
+.processing             {color:black; background:yellow;}
+.grayedGreen            {color:darkgray; background:lightgray; /*#d2f3d2;*/}
+.fgWhite                {color:white;}
+
+.dateNum			{font-weight:bold; margin:1px; padding-right:2px;}
+.grayed				{color:#E1E1E1;}
+
+/** generic border style **/
+.dblBorderTop		{border-top:double #000 1px;}
+.dblBorderBottom	{border-bottom:double #000 2px;}
+
+
+.oneThirdCol		{width:30%; margin:2px 3px;}
+.oneQuarterCol		{width:20%; margin:2px 3px;}
+.splitCol			{width:48%; margin:4px 4px;}
+.minSidesMargin		{margin:0px 5px;}
+.loadAnim			{padding:3px 2px; margin-top:-6px;}
+.loadAnimValidate	{float:right; margin-top:10px; margin-right:10px;}
+.loadAnimShop		{margin-top:-27px; padding-right:5px; padding-left:2px;}
+.minPadding			{padding:3px;}
+.padding5x10		{padding:5px 10px;}
+.padding10x5		{padding:10px 5px;}
+.padding5x5			{padding:5px 5px;}
+.padding15x10		{padding:15px 10px;}
+.dim80				{opacity:0.8; }
+.dim60				{opacity:0.6; }
+.dim40				{opacity:0.4; }
+.dim20				{opacity:0.2; }
+.clickable			{cursor:pointer;}
+.rowHighlight		{background:#EBEBEB;}
+.centerDiv			{margin:0px auto;}
+.adaptHeight		{overflow:auto;}
+.nobr				{white-space:nowrap;}
+.freeInput			{vertical-align:middle;}
+
+.ui-widget-content h2 	{padding-left:15px;}
+.ui-state-success		{background-color:#d2f3d2; border:1px solid #7eca7e;}
+.infoblurp				{margin:20px; padding:15px; border:1px solid #72b42d; text-align:center; border-radius:10px;}
+	
+/** different table styles **/
+table.tblListingDefault				{width:100%;  border-collapse:collapse;}
+table.tblListingDefault th			{background:#f3f3f3; padding:4px 2px; text-align:left;}
+table.tblListingDefault th.textAlignRight { text-align: right; }
+table.tblListingDefault th.textAlignCenter { text-align: center; }
+table.tblListingDefault td			{padding:2px 8px; text-align:left; vertical-align:bottom;}
+table.tblListingDefault td.textAlignRight { text-align: right; }
+table.tblListingDefault td.textAlignCenter { text-align: center; }
+table.tblListingDefault tfoot td	{padding:2px 4px; margin:1px; text-align:right;}
+
+table.tblListingGrid			{width:100%;}
+table.tblListingGrid th			{background:#f3f3f3; padding:4px 4px; margin:1px; text-align:left;}
+table.tblListingGrid td			{background:#ebebeb; padding:2px 4px; margin:1px; text-align:left;}
+table.tblListingGrid tfoot td	{background:#EBEBEB; padding:2px 4px; margin:1px; text-align:right;}
+
+/*{text-align:right;  padding:5px 5px;}*/
+
+
+table.tblListingBorder		{width:100%; border-collapse:collapse;}
+table.tblListingBorder th	{background:#f3f3f3; padding:4px 8px; border:1px solid black;}
+table.tblListingBorder td	{padding:4px 8px; text-align:left; border:1px solid black; vertical-align:middle;}
+
+table.tblListingBorder2		{width:100%; border-collapse:collapse;}
+table.tblListingBorder2 th	{background:#f3f3f3; padding:4px 8px; border:1px solid #c3c3c3;}
+table.tblListingBorder2 td	{padding:4px 8px; text-align:left; border:1px solid #c3c3c3; vertical-align:top;}
+
+
+table.tblForms	td			{text-align:left; padding-right:10px; padding-left:1px; padding-top:4px; vertical-align:middle;}
+table.tblForms 	td p		{border:1px solid #f3f3f3; background:#fafafa; padding:4px; }
+table.tblForms 	td label 	{float:right;}
+
+table.tblFormsSettings		{width:100%}
+table.tblFormsSettings	th	{background:#eaeaea; padding:4px 4px; text-align:left;}
+table.tblFormsSettings	td	{text-align:left; padding-right:10px; padding-left:4px; padding-top:4px; vertical-align:top;}
+table.tblFormsSettings 	td p {border:1px solid #f3f3f3; background:#fafafa; padding:4px; }
+table.tblFormsSettings 	td label 	{float:left;}
+
+
+
+/** common layout **/
+div#wrap			{width:92%; margin: 0 auto; background-color:#fff;}
+div#stagewrap		{background-color:#ff; min-width:900px;}
+div#topMenu			{}
+div#menuBgBar		{padding:5px; margin-bottom:10px;}
+a#navMyAccount		{float:right;}
+div#headwrap		{width:100%; min-width:1000px; background-color:#fff;}
+div#logonStatus		{text-align:right; padding:6px 5px; color:#999; font-size:0.8em;}
+div#wrapUFSelect	{margin-top:140px;}
+
+div#titlewrap		{width:100%; overflow:hidden; margin-bottom:20px;}
+div#titleLeftCol	{width:70%; float:left;}
+div#titleRightCol	{width:28%; float:right; padding-top:10px; padding-right:5px; line-height:2em;}
+div#titleLeftCol50	{width:50%; float:left;}
+div#titleRightCol50	{width:49%; float:left; padding-top:15px; line-height:2em;}
+div#titleSub		{float:right; margin-top:-18px; margin-right:20px;}
+div#ViewChoice		{float:right; margin-top:10px;}
+div#withSelected	{margin-left:15px; margin-top:-20px; margin-bottom:5px;}
+
+.aix-layout-center80 {width:80%; margin:5px auto;}
+.aix-layout-center60 {width:60%; margin:5px auto;}
+.aix-layout-centerDiv{margin:5px auto;}
+.aix-layout-max-W800 {max-width:800px; margin:5px auto;}
+
+
+.aix-layout-splitW80 {width:78%;}
+.aix-layout-splitW60 {width:59%;}
+.aix-layout-splitW40 {width:39%;}
+.aix-layout-splitW50 {width:50%;}
+.aix-layout-splitW30 {width:29%;}
+.aix-layout-splitW25 {width:25%;}
+.aix-layout-splitW20 {width:20%;}
+
+
+.aix-layout-fixW80	 {width: 80px;}
+.aix-layout-fixW100	 {width:100px;}
+.aix-layout-fixW150	 {width:150px;}
+.aix-layout-fixW250	 {width:250px;}
+.aix-layout-fixW350	 {width:350px;}
+.aix-layout-fixW450	 {width:450px;}
+
+.aix-layout-title-with-icon {margin-left:100px;}
+
+.aix-layout-widget-left-col		{margin-right:20px; padding-bottom:2px;}
+.aix-layout-widget-right-col	{margin-left:20px; padding-bottom:2px;}
+.aix-layout-widget-center-col	{margin:0px 5%; padding-bottom:2px;}
+
+.aix-style-entry-widget			{margin-top:30px; margin-bottom:20px; padding-bottom:2px;}
+.aix-style-entry-widget h2		{color:gray; border-bottom:3px solid #e4e4f1;}
+.aix-style-entry-widget table	{padding:15px;}
+.aix-style-entry-widget table td	{padding:15px;}
+
+.aix-style-observer-widget 		{margin-bottom:10px; margin-left:5px;}
+.aix-style-observer-widget div	{padding:10px;}
+.aix-style-observer-widget h3	{padding:2px 4px;}
+.aix-style-observer-widget table {padding:0px 4px; margin-bottom:5px;}
+
+
+.aix-style-neg-balance 	{color:#ff0000;}
+.aix-style-pos-balance 	{color:#000000;}
+
+
+.aix-style-padding3x3				{padding:3px;}
+.aix-style-padding8x8				{padding:8px;}
+.aix-style-highlight-deposit		{background-color:#7ECA7E; padding:22px;}
+.aix-style-highlight-withdrawl		{background-color:#FF7A75; padding:22px;}
+.aix-style-provider-name			{text-transform:uppercase; font-weight:bold;}
+.aix-style-ok-green 				{background:#D1F3D1; background-color:#D1F3D1;}
+
+
+/** for validate 
+div#deposit_content 	{padding:10px 5px;}
+.rightCol-Observer		{padding:3px; margin-bottom:5px;}
+.rightCol-Observer h3	{padding:2px 4px;}
+**/
+
+
+/*div#leftCol			{width:60%; float:left;}
+div#rightCol		{width:38%; float:left; margin-left:2px; min-height:400px;}*/
+.toggleShopDate		{font-weight:bold; cursor:pointer;}
+
+
+
+
+/** for login **/
+div#logonWrap 			{min-width:280px; float:right;}
+
+div#pwdWrap				{width:460px; margin:60px auto;}
+/*div#newsWrap			{float:left; max-width:800px;}*/
+p#logonHeader			{width:100%; height:150px; margin:10px auto; background-color:#fff; background-image:url('../img/aixada_header1600.150.png');}
+p#logonHeader span		{padding: 0 16px; 
+            font-family: Verdana,Arial,sans-serif;
+            font-size: 120px; font-weight: bold; text-shadow: 2px 2px 8px #666;
+            color: #dee9d8; opacity: 0.7; filter: alpha(opacity=70);}
+.success_tips			{margin:10px; padding:6px; background-color:#d2f3d2; border:1px solid #72b42d;}
+.ui-state-error, div.ui-widget .ui-state-error,
+.success_tips			{text-align:center; border-radius:10px;}
+.ui-state-error, div.ui-widget .ui-state-error
+						{background-color: #fdd; background-image: none;
+						color:#933;}
+sup						{color:red; font-size:0.6em; padding-top:3px;}
+
+div.portalPost			{border-bottom:3px solid #e4e4f1;}
+div.portalPost .subject {color:#365da0; margin-top:28px;}
+div.portalPost .info	{text-transform:uppercase; margin-bottom:10px; color:#9999a2; font-size:0.8em;} 
+div.portalPost .msg		{text-align:justify; margin-bottom:20px;} 
+
+
+/** for manage dates 
+div#setOrderable		{margin-right:20px; margin-bottom:40px;}
+p#weekDays			{margin:10px 20px;}**/
+
+
+/** member uf user **/
+.member-info		{margin-bottom:20px; margin-left:25px; margin-right:25px;}
+.member-add			{margin-bottom:100px; margin-left:25px;}
+
+
+
+
+
+
+
+
+/** for incidents **/
+div#incidents_listing a	{font-size:0.8em; margin-right:20px;}
+.spacingEnd				{background:#d3d3d3; padding:0px;}
+
+/*table#tbl_incidents		{width:100%; } 
+table#tbl_incidents td  {padding-top:1px; padding-right:20px; padding-left:5px;}
+table#tbl_incidents th  {background:#f3f3f3;}*/
+.minwidth-50			{min-width:50px;}
+.minwidth-30			{min-width:30px;}
+.minwidth-180			{min-width:180px;}
+.minwidth-150			{min-width:150px;}
+.width-400				{width:400px;}
+.width-280				{width:280px;}
+.width-210				{width:210px;}
+.maxwidth-30			{width:30px;}
+.maxwidth-100			{width:100px;}
+
+.incidentsSubject		{text-decoration:underline; cursor:hand;}
+.incidentsDetails		{padding-top:10px; background-color:white; padding-bottom:10px;}
+
+
+/** shop and order **/
+div.wrapSelect			{}	
+div.orderStatus 		{margin-top:-40px; margin-bottom:30px; margin-left:25em;}
+
+
+/** for home / index pGE **/
+/**div#menuTable table 	{border:0px solid black;}
+div#menuTable table td 	{padding:20px 30px; text-align:center;}
+div#menuTable a			{font-size:1.2em; text-decoration:none;}
+div#menuTable a:hover	{font-size:1.2em; text-decoration:underline;}
+**/
+/*div#homeWrap			{margin:0 auto; max-width:1000px;}*/
+/*div#leftIconCol			{width:30%; float:left; margin-right:30px;}
+div#rightSummaryCol		{width:65%; float:left; padding-top:10px;}*/
+.homeIcon				{margin-bottom:20px; text-align:center;}
+
+
+.overviewDateRow		{margin-bottom:5px; border-bottom:3px solid #cccccc;  }
+.tdMyOrderId {font-size:0.75em; }
+.tdMyOrder				{font-size:0.75em; background-color:#efefef; border-bottom:solid black 1px;}
+.MyOrderItem, .MyShopItem {font-size:0.75em; background-color:#f1f1f1;}
+
+
+/** for report page **/
+div#mainReportListing						{margin-top:15px;}
+div#mainReportListing  .order4Provider p	{padding:2px 2px; margin-top:2px; margin-bottom:2px; background-color:#f3f3f3}
+div#mainReportListing .provider 			{margin-bottom:1px; margin-top:10px; padding:2px; padding-right:10px;}
+div#mainReportListing .provider a 			{text-decoration:none;} 
+div#mainReportListing table 				{margin-left:30px; margin-bottom:20px;}
+div#mainReportListing td 					{text-align:right; padding:2px 4px 3px 3px; border:1px solid #ccc; border-collapse:collapse;}
+div#mainReportListing .report_total_quantity, .report_total_price {float:right; margin-left:30px;}
+div#mainReportListing .report_total_quantity_num {font-weight:bold;}
+
+div#mainReportListing .report_email, .report_printout, .report_total {margin-left:20px; margin-right:5px; float:right;}
+div#mainReportListing .report_email 		{display:none;}
+#reportShowExtended							{margin-right:20px; float:right;}
+.provIcon						{float:left;}
+
+/** for account report **/
+div#account_listing				{width:100%;}
+div#cashbox_listing				{width:100%; clear:both;}
+
+
+
+/** for de-activate products table **/
+.table_datesOrderableProducts td				{background:#EBEBEB; padding:4px;}
+.table_datesOrderableProducts td				{border:#EBEBEB 1px solid;}
+.table_datesOrderableProducts th				{border:#E1E1E1 1px solid;}
+.table_datesOrderableProducts .ax_state_hover   {border:1px solid #999999; pading:4px; color:red;}
+
+.table_datesOrderableProducts td.isOrderable	{background:#D1F3D1; cursor:pointer;}
+.table_datesOrderableProducts td.notOrderable	{background:#FFEDA1; cursor:pointer;}
+.table_datesOrderableProducts td.deactivated	{background:#FFCCCA;}
+.table_datesOrderableProducts td.preorder		{background:#D1F3D1;}
+
+.dateTableMonthYear								{margin:0px 20px;}
+.tfootDateGenerate								{cursor:pointer}
+ .infoTdLine									{font-size:0.8em; background-color:white; margin-bottom:-0.2em; padding-bottom:0px;}
+h3#providerName									{font-size:1.5em; padding-left:10px;}
+div#colActionIcons  		{width:280px; padding:4px;}
+.tfIcon						{margin-right:6px; float:left;}
+.tdIconCenter				{margin:1px auto;}
+.tdIconRight				{float:right; padding:2px; margin-bottom:-12px;}
+.tfIconCol, .tfIconRow		{padding:5px;}
+.iconContainer				{padding:4px; margin:0px 3px; width:16px; height:16px; cursor:pointer;}
+.iconContainerNull			{padding:4px; margin:0px 3px; width:16px; height:16px;}
+.tfIconCol a, a:hover 		{text-decoration:none;}
+.tfIconRow a, a:hover 		{text-decoration:none;}
+
+
+/** for manage orders **/
+h3#orderInfoDate			{font-size:1.5em;}
+.btn_right					{margin-right:-2em; margin-left:4px; float:right;}
+#btn_overview				{vertical-align:middle; margin-right:20px; margin-top:1em;}
+.btn_back					{vertical-align:middle; margin-right:20px; margin-top:1em;}
+.tblReviseOrder	td			{background:#EBEBEB; padding:4px; margin:0px;}
+td.cellInfo	{font-size:0.6em; background:#ff; opacity:.8; margin:0px; padding:0px;}
+td.revised	{background:#D1F3D1;}
+td.toRevise	{background:#FFEDA1;}
+td.missing	{background:#FFCCCA;}
+.editHighlightRow			{opacity:.6}
+.editHighlightCol			{opacity:.6}
+
+.isSend			{background:#e8e8e8;}
+.asOrdered		{background:#D1F3D1;}
+.withChanges	{background:#FFEDA1;}
+.orderCanceled	{background:#ff7a75;}
+.postponed		{background:#efd2f8;}
+
+
+
+
+/** three column layout for: manager_orders, activate roles, activate products**/
+.multipleSelect			{width:250px; height:300px;}
+div#threeColWrap div	{float:left;}
+div#middleColumn		{padding:40px 20px;}
+div#mngOrderBtn			{clear:both; margin-left:500px; padding-top:10px;}
+
+
+
+/** styles for cart **/
+.right-icons {float:right; margin-right:5px; margin-top:3px;}
+.left-icons	{float:left; margin-right:5px;}
+
+/** for pagination navigation **/
+div#pagNav span			{float:left; margin-left:3px; margin-right:3px;}
+
+
+/** styles for forms **/
+.formLabel				{text-align:right; padding-right:4px;}
+.inputTxt				{border:1px #d3d3d3 solid; background-color:#fff;}
+td h1					{font-weight:bold; font-size:1.2em; padding-top:12px; padding-bottom:3px; border:none;}
+td h2					{font-weight:bold; font-size:1em; padding-top:12px; padding-bottom:3px;}
+input 					{height:1.6em;}
+.total, .total_label	{font-weight:bold;}
+.faintSuggest			{color:#d3d3d3;}
+.textareaSmall			{width:180px; height:50px;}
+.textareaLarge			{width:480px; height:150px;}
+.textareaMax			{width:100%; height:80px;}
+.inputTxtTiny			{width:40px;}
+.inputTxtSmall			{width:110px;}
+.inputTxtMiddle			{width:180px;}
+.inputTxtLarge			{width:480px;}
+.inputTxtMax			{width:100%;}
+
+.mediumSelect			{width:150px; }
+.longSelect				{width:300px; margin-bottom:10px;}
+.datePickerInput		{font-size:.85em; width:12em; padding:2px;}
+.multipleSelect			{height:280px;}
+
+
+
+.product_list, .table_listing, .purchase_listing, .tblOverviewOrders, .table_listing_cashbox, .table_datesOrderableProducts, .table_overviewShop {width:100%;}
+.product_list_mng td, th			{padding:2px 5px;}
+.table_listing td					{text-align:right; padding:1px;}
+.product_list td					{text-align:right; background:#EBEBEB; padding:5px 5px;}
+.purchase_listing td				{text-align:right; padding-right:5px;}
+.table_listing_cashbox td			{text-align:left; padding:2px;}
+.tblOverviewOrders td				{padding-right:4px; padding-left:4px;}
+
+
+
+
+
+
+
+

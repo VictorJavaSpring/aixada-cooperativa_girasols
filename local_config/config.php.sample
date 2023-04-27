@@ -1,0 +1,731 @@
+<?php
+
+/** 
+ * @package Aixada
+ */ 
+
+
+/**
+ * The Singleton class for global configuration variables.
+ * We make a Singleton object so as not to pollute the global namespace.
+ * @package Aixada
+ */
+
+class configuration_vars {
+
+    /*******************************************************************
+        Here begin the variables you must set during installation.
+    ********************************************************************/
+
+  /**
+   * General variables
+   */
+  public $default_language = 'es';
+  
+
+  /**
+   * What is the name of this cooperative?
+   */
+  public $coop_name = 'L\'Aixada';
+  // Show coop name on header of login.php
+    public $login_header_show_name = false;
+  // Header image used in login.php.
+    public $login_header_image = "local_config/custom_img/our_cooperative_banner.jpg";
+            // Set to false to not use image
+  // Used in Report headers
+    public $coop_header_logo = 'local_config/custom_img/our_cooperative_logo.png';
+            // Set to false to not use logo
+    public $coop_VAT_number = 'F9999999'; // CIF
+    public $coop_address = 'Street...';
+    public $coop_city = 'Zip City';
+    public $coop_contact_inf = 'email@bla.com<br>bla bla bla...'; // Use <br> to force line break
+
+  
+  /**
+   * Configure the database connection
+   */
+  public $db_type = 'mysqli';
+  public $db_host = 'localhost';
+  public $db_name = 'aixada';
+  public $db_user = 'aixada';
+  public $db_password = 'aixada';
+  
+  
+
+  /****************************************************************************
+     You should not need to change anything past this point when installing.
+  ****************************************************************************/
+
+  /**
+   * Indicates whether the store is used. Possible values are:
+   *    - 'order_and_stock': The shop is shown with all active products
+   *                         (default if is missing or true)
+   *    - 'only_stock':      The shop is shown only with active stock products.
+   *    - false:             The shop is not shown.
+   * @var string|boolean
+   */
+  public $use_shop = 'order_and_stock';
+
+  /**
+   * Allows allocate losses order distribution to a fictitious family (when the
+   * review is done)
+   * @var integer
+   */
+  // public $revision_fixed_uf = 1; // Uncomment to active
+  
+  /**
+   *
+   * Allow yourself validate your cart.
+   * (if it is not set `false` is used as default value)
+   * @var boolean
+   */
+  public $validate_self = false;
+
+  /**
+   *
+   * After a cart validation shows warning message if no deposit has been made.
+   * (if it is not set `true` is used as default value)
+   * @var boolean
+   */
+  public $validate_deposit = true;
+
+  /**
+   * What period are shown the carts on validation, values allowed: 'day' 
+   * or 'week', default value is 'day'.
+   *
+   * NOTE: If validation is not performed the day that orders are distributed
+   * may be desirable to see all carts of the week.
+   * @var boolean
+   */  
+  public $validate_show_carts = 'day';
+
+  /**
+   * Allows create a empty cart at validation. This is usefully to assign
+   *    products to a UF with no orders and no shop or when is used the
+   *    option `$order_distribution_method = 'distribute_and_validate'`.
+   * If is true a button "Create cart" is displayed when is select a UF without
+   *    not validated carts (default value is false)
+   * @var boolean
+   */  
+  public $validate_btn_create_carts = false;
+ 
+  /**
+   * 
+   * Sets the max. time scale for activating orderable dates into the future. E.g. 48 means that max. the orderable dates 
+   * for the next 4 years can be generated in advance. 
+   * @var num
+   */
+  public $max_month_orderable_dates = 12;
+  
+  /**
+   *
+   * Prevents purchase products with no stock (used in shop_and_order.php)
+   * @var boolean
+   */  
+  public $prevent_out_of_stock_purchase = true;
+  
+  /**
+   * Allows to put stock products into a HU order. Default value is false.
+   */
+  public $orders_allow_stock = false;
+  
+  /**
+   *
+   * Allows to choose the order in which the UF will be displayed when reviewing
+   *    look and print orders.
+   * Possible values are: `asc` (by id_uf in ascending), `desc` (by id_uf
+   *    descending) and `name` (alphabetically by name) Default value is `desc`.
+   * 
+   */
+  public $order_review_uf_sequence = 'desc';
+  
+  /**
+   * Possible methods of distributing orders are: 'only_distribute',
+   *    'distribute_and_validate' and 'choice' (both are available),
+   *     default is 'only_distribute'.
+   */
+  public $order_distribution_method = 'only_distribute';
+  
+  /**
+   * When the method 'distribute_and_validate' is used can also record the
+   * provider note as invoice into account provider, default is true
+   * (requires option `$accounts['use_providers'] = true` to take effect)
+   */
+  public $order_distributeValidate_invoce = true;
+
+  /**
+   * 
+   * the default jquery-ui theme. these are located in css/ui-themes
+   * @var string
+   */
+  public $default_theme = "smoothness"; // start | ui-lightness | smoothness | redmond
+  
+
+  /**
+   * Aixada provides two methods of backup one via script and one internal by
+   *    mysqli (internal is experimental but is already used in production)
+   * By default the script is used and whether its execution fails due to host
+   * restrictions internal method is used.
+   *
+   * To force usage of internal method set `public $db_backup_method = 'int';`
+   *
+   * (For data migration internal method provides a more comfortable to read or
+   *    edit db-backup sql files)
+   */
+  // public $db_backup_method = 'int';
+  
+  
+  /**
+   * 
+   * Set the system wide currency symbol and type_id. The currency description 
+   * can be set in the specific language files $Text['currency_desc'] = "" 
+   * @var string
+   */
+  public $currency_sign = "€";
+  public $currency_type_id = 1;
+  
+  /**
+   * Formats used to format data according to type and kind of content.
+   *
+   * NOTE: By the moment only applied to data related with money information
+   *       and management.
+   */
+  public $type_formats = array(
+    // Leave a format as false to not format a kind of content.
+    'dates' => array(
+        // Date formats, uses formatting of php 
+        'date' => 'd-m-Y',
+        'datetime' => 'd-m-Y H:i'
+    ),
+    'numbers' => array(
+        // Numeric formats as "ndt" where:
+        //     n=number of decimals (one numeric digit or z to remove leading
+        //          zeros to the right of the decimal)
+        //     d=separator for the decimal point
+        //     t=thousands separator.
+        // NOTE: By the moment only 'n.' is supported because since part of the
+        //       js code is not yet adapted.
+        'amount' => '2.' 
+    )
+  );
+  
+  /**
+   * To work on hostings with few resources (memory) it is recommended to
+   * sequence ajax requests, this avoids simulating requests from a page.
+   */
+  //public $use_ajaxQueue  = true; 
+  
+    /**
+   * the email address of the admin; used for sending out pwd changes
+   * and orders. 
+   */
+  public $admin_email = "admin@admin.com";
+  
+  /**
+   * Set true to prevent false locks as SPAM when sending mails.
+   * 
+   * NOTE: Aixada puts in 'reply-to' the 'to' or 'cc' of mails, but some hosting
+   *       filters interpret this as a possible malicious attempt to send SPAM.
+   * Comment by a hosting technical support:
+   *      "Usually spammers use this technique to send spam. You should
+   *       avoid using freemail service provider addresses
+   *       in header 'from' or 'reply-to' address."
+   */
+  public $email_safe_replyTo = true;
+  
+  /**
+   * Emails SMTP options. Uncomment to use SMTP through the library swiftmailer
+   * 
+   */
+  // public $email_SMTP_host = 'localhost';       // Set to use a SMTP server. 
+  //                                              // Use SMTP_host='debug' to don't send and dump messages to /local_config/debug_mail/ 
+  // public $email_SMTP_port = 25;                // Default = 25
+  // public $email_SMTP_user = 'admin@admin.com'; // Default = $admin_email (is recommend to not set, so use default as $admin_email)
+  // public $email_SMTP_pswd = 'mypassword';      // If is not set or null SMTP_user/SMTP_pswd are not used.
+  // public $email_SMTP_encryption = null;        // Valid values: 'ssl', 'tls', null. Default = null
+  // public $email_SMTP_verifyCert = true;        // Valid values: true, false. Used if SMTP_encryption is set.
+  //                                              // NOTE: Some host use self-generated certificates. In this case the certificate
+  //                                              //       verification fails and the sending of messages ends in error.
+  //                                              //       So in this case set SMTP_verifyCert=false                                
+  
+  /**
+   * 
+   * Is this a local install or accessible online. Turns globally on/off 
+   * the emailing of reports and other internet related features. If set to "false" 
+   * emailing order reports and incidents will not work. 
+   * @var boolean
+   */
+  public $internet_connection = false; 
+  
+  
+  
+  
+  
+  /**
+   * HTML TEMPLATES
+   */
+  
+  /**
+   * The default template for generating the print layout of the orders
+   */
+  public $print_order_template = 'report_order1.php';
+  
+  
+  /**
+   * 
+   * Default template for printing personal orders of household ...
+   * @var string
+   */
+  public $print_my_orders_template = 'order_model1.php';
+  
+  
+  
+  /**
+   * 
+   * Default template for printing bills of cooperative to members
+   * @var unknown_type
+   */
+  public $print_bill_template = 'bill_model1.php';
+  
+  
+  
+  /**
+   * 
+   * template for printing incidents
+   */
+  public $print_incidents_template = 'incidents_model1.php';
+  
+ 
+  /**
+   * 
+   * diplays the language select on every page or not
+   */
+  public $show_menu_language_select = false; 
+  
+   
+  
+  
+  /**
+   * ORDER REPORT VARS
+   */
+  
+  /**
+   * if set to true, when finalizing orders they 
+   * will be sent to the respective providers directly. Only works on 
+   * servers where PHP.ini is configured appropriately. 
+   */
+  public $email_orders = false; 
+  
+  
+  /**
+   * Default format of emailed orders:
+   *  - 'Prod', '1':    List of products (just summarized)
+   *  - 'Matrix', '2':  Grid products-HU (just extended)
+   *  - 'Prod_Matrix',3:List of products + Grid
+   *  - 'ProdUf':       List of products with HU detail
+   *  - 'Prod_ProdUf':  List of products + List with HU detail
+   *  - 'UfProd':       List of HU with detail products
+   *  - 'none':         Do not send
+   */
+  public $email_order_format = 3;
+  
+  
+  /**
+   * Default prices used on emailed orders: 
+   *  - 'cost_amount':  Price and cost amount (without tax)
+   *  - 'cost':         Cost Amount (without tax)
+   *  - 'none':         Without cost
+   */
+  public $email_order_prices = 'cost_amount';
+  
+  
+  /**
+   * INCIDENTS REPORTING VARS
+   */
+  
+
+  
+  /**
+   * if the incident emails should be send out to another distribution list. 
+   * if left blank, the incidents will be send out to the email addresses of the 
+   * users if available. 
+   */
+  public $incidents_email_list = ""; 
+
+  /**
+   * 
+   * MENU AND RIGHTS
+   * 
+   */
+  private $default_menus = array(
+                      'navHome'      => 'enable',
+                      'navWizard'    => 'disable',
+                      'navShop'      => 'disable',
+                      'navOrder'     => 'disable',
+                      'navManage'    => 'enable',
+                      'navReport'    => 'enable',
+                      'navIncidents' => 'enable'                                  
+                                 );
+
+  public $menu_config 
+      = array( 'Consumer' => 
+               array ( 
+                      'navHome'      => 'enable',
+                      'navWizard'    => 'disable',
+                      'navShop'      => 'enable',
+                      'navOrder'     => 'enable',
+                      'navManage'    => 'disable',
+                      'navReport'    => 'enable',
+                      'navIncidents' => 'enable' 
+                       ),
+               'Hacker Commission' =>
+               array (
+                      'navHome'      => 'enable',
+                      'navWizard'    => 'enable',
+                      'navShop'      => 'disable',
+                      'navOrder'     => 'disable',
+                      'navManage'    => 'enable',
+                      'navReport'    => 'enable',
+                      'navIncidents' => 'enable' 
+                      ),
+               'Checkout' =>
+               array ( 
+                      'navHome'      => 'enable',
+                      'navWizard'    => 'enable',
+                      'navShop'      => 'disable',
+                      'navOrder'     => 'disable',
+                      'navManage'    => 'enable',
+                      'navReport'    => 'enable',
+                      'navIncidents' => 'enable' 
+                       ),               
+               'Consumer Commission' => 
+               array(
+                     'navHome'      => 'enable',
+                     'navWizard'    => 'disable',
+                     'navShop'      => 'disable',
+                     'navOrder'     => 'disable',
+                     'navManage'    => 'enable',
+                     'navReport'    => 'enable',
+                     'navIncidents' => 'enable'                                  
+                     ),
+               'Econo-Legal Commission' => 
+               array(
+                     'navHome'      => 'enable',
+                     'navWizard'    => 'disable',
+                     'navShop'      => 'disable',
+                     'navOrder'     => 'disable',
+                     'navManage'    => 'enable',
+                     'navReport'    => 'enable',
+                     'navIncidents' => 'enable'                                  
+                     ),
+               'Logistic Commission' => 
+               array(
+                     'navHome'      => 'enable',
+                     'navWizard'    => 'disable',
+                     'navShop'      => 'disable',
+                     'navOrder'     => 'disable',
+                     'navManage'    => 'enable',
+                     'navReport'    => 'enable',
+                     'navIncidents' => 'enable'                                  
+                     ),
+               'Fifth Column Commission' => 
+               array(
+                     'navHome'      => 'enable',
+                     'navWizard'    => 'disable',
+                     'navShop'      => 'disable',
+                     'navOrder'     => 'disable',
+                     'navManage'    => 'enable',
+                     'navReport'    => 'enable',
+                     'navIncidents' => 'enable'                                  
+                     ),
+               'Producer' => 
+               array(
+                     'navHome'      => 'enable',
+                     'navWizard'    => 'disable',
+                     'navShop'      => 'disable',
+                     'navOrder'     => 'disable',
+                     'navManage'    => 'enable',
+                     'navReport'    => 'enable',
+                     'navIncidents' => 'enable'                                  
+                     )
+               );
+
+  // Forbidden pages
+  public $forbidden_pages = 
+      array(
+            'Consumer' =>
+            array(
+                  'validate.php',
+                  'manage_table.php',
+                  'activate_products.php',
+                  'activate_roles.php',
+                  'activate_all_roles.php'
+                  ),
+            
+            'Checkout' =>
+            array(
+                  'activate_roles.php',
+                  'activate_all_roles.php',
+                  'shop_and_order.php'
+                  ),
+
+            'Consumer Commission' =>
+            array(
+                  'activate_all_roles.php',
+                  'validate.php'
+                  ),
+
+            'Econo-Legal Commission' =>
+            array(
+                  'activate_all_roles.php',
+                  'validate.php'
+                  ),
+
+            'Logistic Commission' =>
+            array(
+                  'activate_all_roles.php',
+                  'validate.php'
+                  ),
+
+            'Hacker Commission' =>
+            array(),
+
+            'Fifth Column Commission' =>
+            array(
+                  'activate_all_roles.php',
+                  'validate.php'
+                  ),
+
+            'Producer' =>
+            array(
+                  'validate.php',
+                  'manage_table.php',
+                  'activate_products.php',
+                  'activate_roles.php',
+                  'activate_all_roles.php',
+                  'report_order.php',
+                  'report_account.php'
+                  )
+            );
+                  
+  
+  // Roles and their privileges
+  public $rights_of = 
+      array (
+             'Checkout' =>
+             array('may_edit_user', 
+                   'may_edit_uf', 
+                   'may_edit_member',
+                   'may_edit_provider',
+                   'may_edit_product',
+                   'may_edit_incident',
+                   'may_edit_account',
+                   'may_edit_unit_measure',
+             	   'may_edit_iva_type',
+                   'may_view_all_accounts',
+                   'may_edit_rev_tax_type',
+                   'may_edit_account_desc',
+                   'may_edit_payment_method'
+             ),
+             'Consumer' =>
+             array('may_edit_incident',
+                   'may_edit_provider'),
+             
+             'Consumer Commission' =>
+             array('may_edit_product',
+                   'may_edit_provider',
+                   'may_edit_incident',
+                   'may_edit_unit_measure',
+             	   'may_edit_iva_type'),
+
+             'Econo-Legal Commission' =>
+             array('may_edit_incident',
+                   'may_view_all_accounts'),
+             
+             'Logistic Commission' =>
+             array('may_edit_incident'),
+             
+             'Hacker Commission' =>
+             array('may_edit_user', 
+                   'may_edit_uf', 
+                   'may_edit_member',
+                   'may_edit_provider',
+                   'may_edit_product',
+                   'may_edit_incident',
+                   'may_edit_account',
+                   'may_edit_unit_measure',
+                   'may_view_all_accounts',
+                   'may_edit_iva_type',
+                   'may_edit_rev_tax_type',
+                   'may_edit_account_desc',
+                   'may_edit_payment_method',
+                   'may_edit_stock_movement_type'
+             ),
+             'Fifth Commission' =>
+             array('may_edit_incident'),
+
+             'Producer' =>
+             array('may_edit_incident')
+             );
+  
+             
+    /**
+     *  IMPORT CONTROLS
+     */
+    
+    /**
+     * Character encoding used by sources of importations. The data from a
+     * source are transformed to 'UTF-8' used used internally by Aixada.
+     *
+     * If character set from the sources is not known put to 'auto', then could
+     * be lose some chars but is safer than ''. 
+     * Remove or sets to '' to don't make transformation, but in this case if
+     * files don't use UTF-8 some importations could be fail.
+     *
+     * See valid codes in: 
+     *          http://php.net/manual/en/mbstring.supported-encodings.php
+     *
+     * NOTE: 'Windows-1252' Is the character encoding of the Latin alphabet
+     *       used by Windows systems.
+	 */
+    public $import_from_char_encoding = 'auto';
+
+    
+    /**
+     * if set to true and the import columns/fields match db fields, user will be presented
+     * with an option to try to import all allowed columns without explicit column matching. 
+     * This makes sense for transfers between aixada platforms where we can assume that columns match
+     */  
+    public $allow_global_import = true;  
+     
+
+	/**
+	 *	Enable / disable individual import fields. If $allow_global_import is set to false
+	 *  users can select from the allowed fields to match the import data. If set to true, 
+	 *  the script will try to import/match automatically all allowed fields. 
+	 */     
+	public $allow_import_for = 
+			array(
+					'aixada_product' => 
+						array(	 
+								'name' => 'allow',
+								'provider_id' => 'nope',
+								'description' => 'allow',
+								'barcode' => 'allow',
+								'custom_product_ref' => 'allow',
+								'active' => 'allow',
+								'responsible_uf_id' => 'nope',
+								'orderable_type_id' => 'allow',
+								'order_min_quantity' => 'allow',
+								'category_id' => 'allow',
+								'rev_tax_type_id' => 'allow',
+								'iva_percent_id' => 'allow',
+								'unit_price' => 'allow',
+								'unit_measure_order_id' => 'allow',
+								'unit_measure_shop_id' => 'allow',
+								'stock_min' => 'allow',
+								'stock_actual' => 'nope',
+								'description_url' => 'allow',
+								'picture' => 'allow',
+								'ts' => 'nope'), 
+					'aixada_provider' => 
+						array( 	'name' => 'allow',
+								'nif' => 'allow',
+								'contact' => 'allow',
+								'address' => 'allow',
+								'city' => 'allow', 
+								'zip' => 'allow',
+								'phone1' => 'allow',
+								'phone2' => 'allow',
+								'fax' => 'allow',
+								'email' => 'allow',
+								'web' => 'allow',
+								'bank_name' => 'allow',
+								'bank_account' => 'allow',
+								'notes' => 'allow',
+								'active' => 'alow',
+								'offset_order_close' => 'allow',
+								'ts' => 'nope'),
+						
+					'aixada_product_orderable_for_date' => 
+						array(	'product_id' => 'allow',
+								'date_for_order' => 'allow',
+								'closing_date' => 'allow')
+								);
+ 
+	/**
+	 *	Set templates correspondences to directly import by establishing
+     *  correspondences from columns with database fields.
+	 */
+    public $import_templates = array(
+        // Table any db_field_name must be allowed by $allow_import_for.
+        'aixada_product' => array(
+            // Template name
+            'begues' => array(
+                'options' => array( //optional
+                    'import_mode' => '2', // '0' update only (default mode)
+                                          // '1' insert all
+                                          // '2' insert new and update existing
+                    'deactivate_products' => true // option only for products
+                ),
+                'required_fields' => array( //optional
+                    // Rows without a required fields are ignored.
+                    'custom_product_ref', 'name', 'unit_price'
+                ),                    
+                'match_columns' => array( //Required
+                // db_field_name => col_name or regex to match col_name.
+                    'custom_product_ref' => '/.*_product_ref/',
+                    'name' => '/.*name/',
+                    'unit_price' => '/.*unit_price/',
+                    'unit_measure_order_id' => '/.*unit_measure_order_id/',
+                    'unit_measure_shop_id' => '/.*unit_measure_order_id/'
+                ),
+                'forced_values' => array( //optional
+                    'active' => '1',
+                    'category_id' => '1000',
+                    'rev_tax_type_id' => 2
+                ),
+                'updatable_columns' => array( //optional: default is all columns
+                    'name', 'unit_price', 
+                    // updateable columns of forced_values should be included.
+                    'active', 'rev_tax_type_id'
+                )
+            )
+        )
+    );
+ 
+    /**
+     * How to use the accounts.
+     */
+    public $accounts = array(
+	// With 'account_operations' key you can select operations to be
+	// used in `manage_money.php` and the order in which they appear.
+	// If you do not specify 'account_operations' all available operations are used.
+	// Available operations are:
+	//     'deposit_uf', 'uf_from', 'deposit_others', 'debit_uf', 'refund_uf',	
+	//     'pay_pr', 'withdraw_others', 'invoice_pr', 'move', 'correction'
+	//E.G.:
+		//'account_operations' => array('pay_pr','refund_uf','deposit_uf'),
+	
+	// With 'use_providers' key lets you choose whether providers accounts are
+	// used, disabling the operations of providers not appear.
+	// NOTE: This key has priority over 'account_operations'.
+		'use_providers' => false
+    );
+             
+
+  // from here on follow internals of the configuration_vars class.
+  private static $instance = false;
+
+  public function __construct()
+  {
+  }
+
+  public static function get_instance()
+  {
+    if (self::$instance === false)
+        self::$instance = new configuration_vars();
+    return self::$instance;
+  }
+};
+?>
